@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: infra
+  project: system
+  source:
+    path: argocd/argocd
+    repoURL: git@github.com:jesseops/enterprise-grade-k8s-local.git
+    targetRevision: HEAD

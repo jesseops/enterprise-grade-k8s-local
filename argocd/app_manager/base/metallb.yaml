@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+spec:
+  destination:
+    namespace: metallb-system
+    server: REPLACEME
+  project: system
+  source:
+    path: REPLACEME
+    repoURL: git@github.com:jesseops/enterprise-grade-k8s-local.git
+  syncPolicy:
+    automated:
+      selfHeal: true

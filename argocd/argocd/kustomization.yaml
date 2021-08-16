@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- base/argocd-ns.yaml
+- base/argocd-projects.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.0.5/manifests/install.yaml
+
+patchesStrategicMerge:
+- overlays/infra/argocd-cm.yaml
+- overlays/infra/argocd-rbac-cm.yaml
+- overlays/infra/argocd-server-service.yaml
+
+# patchesJson6902:
+# # patch deploy command to disable tls so we can terminate at nginx
+# # see
+# # https://github.com/kubernetes/ingress-nginx/issues/2492#issuecomment-388840653
+# # for example of this supposedly being fine with one host using ingress-nginx
+# - path: overlays/infra/argocd-server-deploy-command.yaml
+#   target:
+#     group: apps
+#     kind: Deployment
+#     name: argocd-server
+#     version: v1
+
+namespace: argocd
+
+# images:
+# - name: quay.io/argoproj/argocd
+#   newName: ghcr.io/argoproj/argocd
+#   newTag: 2.1.0-50993206

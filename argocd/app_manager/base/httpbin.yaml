@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: httpbin
+  namespace: argocd
+spec:
+  destination:
+    namespace: httpbin
+    server: REPLACEME
+  project: playground
+  source:
+    repoURL: https://charts.jesseops.net
+    chart: httpbin
+    targetRevision: 0.1.1
+    helm:
+      values: |
+        # ingress:
+        #   enabled: true
+        #   hosts:
+        #   - host: httpbin.server.localnet
+        #     paths:
+        #     - path: /
+        #       pathType: prefix
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

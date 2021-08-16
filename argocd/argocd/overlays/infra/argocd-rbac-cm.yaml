@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app.kubernetes.io/name: argocd-rbac-cm
+    app.kubernetes.io/part-of: argocd
+  name: argocd-rbac-cm
+data:
+  policy.default: role:developer # if you're on the machine + authenticated... meh?
+  scopes: '[email, groups]'
+  policy.csv: |
+    # ref https://github.com/argoproj/argo-cd/blob/master/assets/builtin-policy.csv
+
+    ## Developers
+    #p, role:developer, applications, *, test/*, allow
+    #p, role:developer, *, get, *, allow
+    #g, $selector, role:developer
+
+    ## Admin
+    #p, role:admin, applications, *, */*, allow
+    #p, role:admin, *, *, *, allow
+
+    #g, $selector, role:admin
+    #g, ArgoCDAdmin, role:admin
