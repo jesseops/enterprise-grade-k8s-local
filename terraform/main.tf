@@ -57,8 +57,35 @@ resource "local_file" "kubeconfig" {
   file_permission = "0660"
 }
 
-
 # Install ArgoCD w/ basic config
 # Configure clusters in ArgoCD
+resource "kubernetes_namespace" "argo_cluster" {
+  metadata {
+    name = "argocd"
+  }
+}
+
+resource "kubernetes_secret" "argo_cluster" {
+  for_each = module.k8s-cluster
+  metadata {
+    name  = "${each.key}"
+    namespace = "argocd"
+    labels  = {
+      "argocd.argoproj.io/secret-type" = "cluster"
+    }
+  }
+  data = {
+    name = "${each.key}"
+    server = "host.k3d.internal:${each.value.external_api_port}"
+    config = jsonencode({
+      tlsClientConfig = {
+        #insecure = true
+        caData = base64encode("${each.value.api_credentials.client_certificate}")
+      }
+    })
+  }
+
+}
+
 # Add app-of-apps and trigger sync
 

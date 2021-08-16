@@ -19,18 +19,19 @@ resource "k3d_cluster" "cluster" {
   }
 
   image   = "rancher/k3s:${var.cluster_version}"
-  network = "${var.cluster_env}-k3d-cluster"
-  #token=???
+  network = "${var.cluster_env}-k3d"
 
   registries {}
 
   k3d {
     disable_load_balancer = true
+    disable_host_ip_injection = false
   }
 
   k3s {
     extra_server_args = [
       "--tls-san=k8s.${var.cluster_env}.localhost",
+      "--tls-san=host.k3d.internal",
       "--disable=servicelb",
       "--disable=traefik",
     ]

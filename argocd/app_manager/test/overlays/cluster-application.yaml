@@ -6,5 +6,5 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: test
+    name: test
 

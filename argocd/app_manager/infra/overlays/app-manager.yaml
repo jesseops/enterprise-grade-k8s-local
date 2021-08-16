@@ -6,6 +6,6 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: infra
+    name: infra
   source:
     path: argocd/app_manager/infra

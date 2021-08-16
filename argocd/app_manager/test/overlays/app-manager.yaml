@@ -6,6 +6,6 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: test
+    name: test
   source:
     path: argocd/app_manager/test

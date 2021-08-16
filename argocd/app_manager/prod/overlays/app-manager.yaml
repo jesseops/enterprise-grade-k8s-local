@@ -6,6 +6,6 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: prod
+    name: prod
   source:
     path: argocd/app_manager/prod
