@@ -13,11 +13,7 @@ spec:
   - '*'
   destinations:
   - namespace: '*'
-    server: https://k8s.infra.localhost:6445
-  - namespace: '*'
-    server: https://k8s.test.localhost:6451
-  - namespace: '*'
-    server: https://k8s.prod.localhost:6450
+    server: '*'
   clusterResourceWhitelist:
   - group: '*'
     kind: '*'

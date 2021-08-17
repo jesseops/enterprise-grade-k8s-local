@@ -14,7 +14,7 @@ resource "k3d_cluster" "cluster" {
 
   kube_api {
     host      = "k8s.${var.cluster_env}.localhost"
-    host_ip   = "127.0.0.1"
+    host_ip   = "0.0.0.0"
     host_port = var.cluster_api_port
   }
 

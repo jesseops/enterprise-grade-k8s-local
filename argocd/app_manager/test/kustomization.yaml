@@ -9,6 +9,8 @@ patches:
       kind: Application
       name: argo-app-manager
     path: ./overlays/app-manager.yaml
+    options:
+      allowNameChange: true
   - target:
       kind: Application
     path: ./overlays/cluster-application.yaml
