@@ -8,7 +8,7 @@ spec:
     namespace: argocd
   project: system
   source:
-    repoURL: git@github.com:jesseops/enterprise-grade-k8s-local.git
+    repoURL: https://github.com/jesseops/enterprise-grade-k8s-local.git
   syncPolicy:
     automated:
       selfHeal: true

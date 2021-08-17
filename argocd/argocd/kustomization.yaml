@@ -4,7 +4,8 @@ kind: Kustomization
 resources:
 - base/argocd-ns.yaml
 - base/argocd-projects.yaml
-- https://raw.githubusercontent.com/argoproj/argo-cd/v2.0.5/manifests/install.yaml
+- https://raw.githubusercontent.com/argoproj/argo-cd/v2.1.0-rc3/manifests/install.yaml
+
 
 patchesStrategicMerge:
 - overlays/infra/argocd-cm.yaml

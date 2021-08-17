@@ -10,5 +10,5 @@ spec:
   project: system
   source:
     path: argocd/argocd
-    repoURL: git@github.com:jesseops/enterprise-grade-k8s-local.git
+    repoURL: https://github.com/jesseops/enterprise-grade-k8s-local.git
     targetRevision: HEAD
