@@ -76,11 +76,13 @@ resource "kubernetes_secret" "argo_cluster" {
   }
   data = {
     name = "${each.key}"
-    server = "host.k3d.internal:${each.value.external_api_port}"
+    server = "https://host.k3d.internal:${each.value.external_api_port}"
     config = jsonencode({
       tlsClientConfig = {
         #insecure = true
-        caData = base64encode("${each.value.api_credentials.client_certificate}")
+        caData = base64encode("${each.value.api_credentials.cluster_ca_certificate}")
+        certData = base64encode("${each.value.api_credentials.client_certificate}")
+        keyData = base64encode("${each.value.api_credentials.client_key}")
       }
     })
   }

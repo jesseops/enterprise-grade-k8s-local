@@ -5,6 +5,5 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: argocd
     name: infra
 
