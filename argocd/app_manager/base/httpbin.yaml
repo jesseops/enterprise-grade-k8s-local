@@ -6,7 +6,6 @@ metadata:
 spec:
   destination:
     namespace: httpbin
-    server: REPLACEME
   project: playground
   source:
     repoURL: https://charts.jesseops.net

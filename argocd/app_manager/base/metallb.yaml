@@ -6,10 +6,8 @@ metadata:
 spec:
   destination:
     namespace: metallb-system
-    server: REPLACEME
   project: system
   source:
-    path: REPLACEME
     repoURL: git@github.com:jesseops/enterprise-grade-k8s-local.git
   syncPolicy:
     automated:
