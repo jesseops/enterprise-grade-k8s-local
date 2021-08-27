@@ -12,7 +12,7 @@ variable "cluster_version" {
 
 variable "node_count" {
   type    = number
-  default = 1
+  default = 3
 }
 
 variable "save_admin_kubeconfig" {
