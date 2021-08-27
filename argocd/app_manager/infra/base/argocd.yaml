@@ -6,7 +6,6 @@ metadata:
 spec:
   destination:
     namespace: argocd
-    server: infra
   project: system
   source:
     path: argocd/argocd
