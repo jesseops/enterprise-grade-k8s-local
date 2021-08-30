@@ -34,6 +34,20 @@ keyboards.
 _pre-requisites_
 A half-way decent workstation.
 
+### Ensure you have the following installed *FIRST*:
+
+**Docker**
+: We're running containers _in containers_ so make sure you [install Docker](https://docs.docker.com/engine/install/) first!
+
+**k3d**
+: A handy "little helper", [k3d](https://k3d.io/) creates containerized k3s clusters - basically,
+use Docker containers as cluster nodes.
+
+**kubectl**
+: You're going to need [kubectl](https://kubectl.docs.kubernetes.io/) installed so you can run commands on your shiny new clusters.
+
+---
+
 We'll spin up 3 clusters, each with their own set of "nodes". Each will expose the Kubernetes API to
 a separate port on _localhost_. Most direct interaction will be with ArgoCD running on the `infra`
 cluster, allowing it to handle the configuration of the `prod` and `test` clusters.
