@@ -3,11 +3,11 @@ terraform {
   required_providers {
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = "~> 2.4"
+      version = "~> 2.8"
     }
     k3d = {
-      source  = "3rein/k3d"
-      version = "~> 0.0.4"
+      source  = "pvotal-tech/k3d"
+      version = "0.0.5"
     }
     argocd = {
       source  = "oboukili/argocd"
