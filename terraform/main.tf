@@ -51,9 +51,10 @@ module "k8s-cluster" {
 
 # Write Infra kubeconfig to disk (add to global kubeconfig optional)
 resource "local_file" "kubeconfig" {
-  count     = var.save_admin_kubeconfig ? 1 : 0
-  content   = module.k8s-cluster["infra"].kube_config
-  filename  = "${path.root}/${module.k8s-cluster["infra"].cluster_name}.kubeconfig"
+  for_each = local.environments
+
+  content   = module.k8s-cluster[each.key].kube_config
+  filename  = "${path.root}/${module.k8s-cluster[each.key].cluster_name}.kubeconfig"
   file_permission = "0660"
 }
 
