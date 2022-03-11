@@ -111,4 +111,14 @@ kubectl --kubeconfig ../../terraform/infra-local-5a413c1635.kubeconfig \
 
 Login with admin and the password provided.
 
+## Custom DNS nameserver
+If you want to use a different nameserver other than the default 8.8.8.8, you can do so by modifying the coredns configmap
+```bash
+# This gives you the current configmap in a yaml file
+kubectl get configmaps coredns -n kube-system -o yaml > coredns_configmap.yaml
+
+# Edit the file. Change 'forward . /etc/resolv.conf' to 'forward . <IP or FQDN of NS>'
+# Then apply the modified file to update the configmap
+kubectl apply -f coredns_configmap.yaml
+
 ## err, probably need to configure docker networks somewhere...

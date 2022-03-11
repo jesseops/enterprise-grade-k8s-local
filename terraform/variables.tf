@@ -15,7 +15,8 @@ variable "node_count" {
   default = 1
 }
 
-variable "save_admin_kubeconfig" {
-  type    = bool
-  default = true
-}
+# Deprecated. Assuming we want to write the kubeconfig file
+# variable "save_admin_kubeconfig" {
+#   type    = bool
+#   default = true
+# }
